@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class LibraryBook
+{
+private:
+    string bookName;
+    string author;
+    bool issued;
+
+public:
+    // Constructor
+    LibraryBook(string name, string auth)
+    {
+        bookName = name;
+        author = auth;
+        issued = false;
+    }
+
+    // Issue book
+    void issueBook()
+    {
+        if (!issued)
+        {
+            issued = true;
+            cout << "Book issued successfully!" << endl;
+        }
+        else
+        {
+            cout << "Book is already issued!" << endl;
+        }
+    }
+
+    // Return book
+    void returnBook()
+    {
+        if (issued)
+        {
+            issued = false;
+            cout << "Book returned successfully!" << endl;
+        }
+        else
+        {
+            cout << "Book was not issued!" << endl;
+        }
+    }
+
+    // Display book details
+    void displayBook()
+    {
+        cout << "\nBook Name: " << bookName << endl;
+        cout << "Author: " << author << endl;
+
+        if (issued)
+            cout << "Status: Issued" << endl;
+        else
+            cout << "Status: Available" << endl;
+    }
+};
+
+int main()
+{
+    LibraryBook book("The Alchemist", "Paulo Coelho");
+
+    book.displayBook();
+
+    book.issueBook();
+    book.displayBook();
+
+    book.returnBook();
+    book.displayBook();
+
+    return 0;
+}
