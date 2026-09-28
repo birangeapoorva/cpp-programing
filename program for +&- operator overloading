@@ -1,0 +1,52 @@
+include <iostream>
+using namespace std;
+
+class Number
+{
+    int n;
+
+public:
+    Number()
+    {
+        n = 0;
+    }
+
+    Number(int x)
+    {
+        n = x;
+    }
+
+    Number operator+(Number obj)
+    {
+        Number temp;
+        temp.n = n + obj.n;
+        return temp;
+    }
+
+    Number operator-(Number obj)
+    {
+        Number temp;
+        temp.n = n - obj.n;
+        return temp;
+    }
+
+    void display()
+    {
+        cout << n;
+    }
+};
+
+int main()
+{
+    Number n1(10), n2(20), n3;
+
+    n3 = n1 + n2;
+    cout << "Addition = ";
+    n3.display();
+
+    n3 = n1 - n2;
+    cout << "\nSubtraction = ";
+    n3.display();
+
+    return 0;
+}
