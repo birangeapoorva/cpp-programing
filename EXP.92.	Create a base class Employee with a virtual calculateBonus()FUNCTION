@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+protected:
+    double salary;
+
+public:
+    void getSalary()
+    {
+        cout << "Enter salary: ";
+        cin >> salary;
+    }
+
+    virtual void calculateBonus()
+    {
+        cout << "Bonus: " << salary * 0.10 << endl;
+    }
+};
+
+class Manager : public Employee
+{
+public:
+    void calculateBonus()
+    {
+        cout << "Manager Bonus: " << salary * 0.20 << endl;
+    }
+};
+
+class Developer : public Employee
+{
+public:
+    void calculateBonus()
+    {
+        cout << "Developer Bonus: " << salary * 0.15 << endl;
+    }
+};
+
+int main()
+{
+    Manager m;
+    Developer d;
+
+    Employee *e;
+
+    cout << "Enter Manager Salary: ";
+    m.getSalary();
+
+    cout << "Enter Developer Salary: ";
+    d.getSalary();
+
+    e = &m;
+    e->calculateBonus();
+
+    e = &d;
+    e->calculateBonus();
+
+    return 0;
+}
