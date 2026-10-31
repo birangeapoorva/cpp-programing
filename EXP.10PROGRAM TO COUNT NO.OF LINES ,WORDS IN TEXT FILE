@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    ofstream fout("records.txt", ios::app);
+
+    string record;
+    char choice;
+
+    do
+    {
+        cout << "Enter record: ";
+        getline(cin, record);
+
+        fout << record << endl;
+
+        cout << "Add another record? (y/n): ";
+        cin >> choice;
+        cin.ignore();
+
+    } while (choice == 'y' || choice == 'Y');
+
+    fout.close();
+
+    ifstream fin("records.txt");
+
+    cout << "\nAll Records:\n";
+
+    while (getline(fin, record))
+    {
+        cout << record << endl;
+    }
+
+    fin.close();
+
+    return 0;
+}
